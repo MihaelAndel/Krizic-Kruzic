@@ -7,8 +7,7 @@ namespace program
     {
         static void Main(string[] args)
         {
-            Console.Clear();
-            
+   
             String IgracJedan = "X";
             string IgracDva = "O";
 
@@ -45,7 +44,7 @@ namespace program
                     BrojPolja = Convert.ToInt32(Console.ReadLine());
                 }while(zapisiSimbolUIgru(Polje, BrojPolja, IgracJedan) == false);
 
-                if(provjeriZaPobjednika(Polje))
+                if(provjeriZaPobjednika(Polje) == true)
                 {
                     Console.Clear();
                     ispisiIgru(Polje);
@@ -53,7 +52,12 @@ namespace program
                     break;
                 }
 
-                Console.Clear();
+                if(provjeriIzjednaceno(Polje) == true)
+                {
+                    ispisiIgru(Polje);
+                    Console.WriteLine("Izjednaceno!");
+                    break;
+                }
 
                 ispisiIgru(Polje);
 
@@ -64,21 +68,26 @@ namespace program
                     BrojPolja = Convert.ToInt32(Console.ReadLine());
                 }while(zapisiSimbolUIgru(Polje, BrojPolja, IgracDva) == false);
 
-                if(provjeriZaPobjednika(Polje))
+                if(provjeriZaPobjednika(Polje) == true)
                 {
                     Console.Clear();
                     ispisiIgru(Polje);
                     Console.WriteLine("Igrac 2 je pobjednik!");
                     break;
                 }
-                
-                Console.Clear();
 
+                if(provjeriIzjednaceno(Polje) == true)
+                {
+                    ispisiIgru(Polje);
+                    Console.WriteLine("Izjednaceno!");
+                    break;
+                }
             }
         }
 
         static void ispisiIgru(Simbol[,] Polje)
         {
+            Console.Clear();
             for(int i = 0; i < 3; i++)
             {
                 for(int j = 0; j < 3; j++)
@@ -187,12 +196,21 @@ namespace program
             return false;
         }
 
-        static void Test(Simbol[,] Polje)
+        static bool provjeriIzjednaceno(Simbol[,] Polje)
         {
-            Polje[1,1].PostaviSimbol("X");
-            Polje[0,2].PostaviSimbol("O");
-            Polje[2,0].PostaviSimbol("X");
-            Polje[2,2].PostaviSimbol("X");
+            for(int i = 0; i < 3; i++)
+            {
+                for(int j = 0; j < 3; j++)
+                {
+                    if(Polje[i,j].DohvatiTip() == Tip.Prazno)
+                    {
+                        return false;
+                    }
+                }
+            }
+            
+            return true;
         }
+
     }
 }
