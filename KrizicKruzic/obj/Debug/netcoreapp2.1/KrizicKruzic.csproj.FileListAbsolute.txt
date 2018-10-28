@@ -1,0 +1,11 @@
+C:\Users\Mihael Anđel\Documents\GitHub repozitoriji\Krizic-Kruzic\KrizicKruzic\obj\Debug\netcoreapp2.1\KrizicKruzic.csprojAssemblyReference.cache
+C:\Users\Mihael Anđel\Documents\GitHub repozitoriji\Krizic-Kruzic\KrizicKruzic\obj\Debug\netcoreapp2.1\KrizicKruzic.csproj.CoreCompileInputs.cache
+C:\Users\Mihael Anđel\Documents\GitHub repozitoriji\Krizic-Kruzic\KrizicKruzic\obj\Debug\netcoreapp2.1\KrizicKruzic.AssemblyInfoInputs.cache
+C:\Users\Mihael Anđel\Documents\GitHub repozitoriji\Krizic-Kruzic\KrizicKruzic\obj\Debug\netcoreapp2.1\KrizicKruzic.AssemblyInfo.cs
+C:\Users\Mihael Anđel\Documents\GitHub repozitoriji\Krizic-Kruzic\KrizicKruzic\bin\Debug\netcoreapp2.1\KrizicKruzic.deps.json
+C:\Users\Mihael Anđel\Documents\GitHub repozitoriji\Krizic-Kruzic\KrizicKruzic\bin\Debug\netcoreapp2.1\KrizicKruzic.runtimeconfig.json
+C:\Users\Mihael Anđel\Documents\GitHub repozitoriji\Krizic-Kruzic\KrizicKruzic\bin\Debug\netcoreapp2.1\KrizicKruzic.runtimeconfig.dev.json
+C:\Users\Mihael Anđel\Documents\GitHub repozitoriji\Krizic-Kruzic\KrizicKruzic\bin\Debug\netcoreapp2.1\KrizicKruzic.dll
+C:\Users\Mihael Anđel\Documents\GitHub repozitoriji\Krizic-Kruzic\KrizicKruzic\bin\Debug\netcoreapp2.1\KrizicKruzic.pdb
+C:\Users\Mihael Anđel\Documents\GitHub repozitoriji\Krizic-Kruzic\KrizicKruzic\obj\Debug\netcoreapp2.1\KrizicKruzic.dll
+C:\Users\Mihael Anđel\Documents\GitHub repozitoriji\Krizic-Kruzic\KrizicKruzic\obj\Debug\netcoreapp2.1\KrizicKruzic.pdb
