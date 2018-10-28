@@ -28,9 +28,7 @@ namespace program
                     Polje[i,j].Koordinatiziraj(i, j);
                 }
             }
-
-            //Test(Polje);
-
+            
             int BrojPolja;
 
             while(true)
