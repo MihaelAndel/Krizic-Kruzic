@@ -38,11 +38,12 @@ namespace program
             {
                 ispisiIgru(Polje);
                 
-                Console.Write("Igrac 1 (X) - broj polja: ");
-                
-                BrojPolja = Convert.ToInt32(Console.ReadLine());
-      
-                zapisiSimbolUIgru(Polje, BrojPolja, IgracJedan);
+                do
+                {
+                    Console.Write("Igrac 1 (X) - broj polja: ");
+                    
+                    BrojPolja = Convert.ToInt32(Console.ReadLine());
+                }while(zapisiSimbolUIgru(Polje, BrojPolja, IgracJedan) == false);
 
                 if(provjeriZaPobjednika(Polje))
                 {
@@ -56,10 +57,12 @@ namespace program
 
                 ispisiIgru(Polje);
 
-                Console.Write("Igrac 2 (O) - broj polja: ");
-                BrojPolja = Convert.ToInt16(Console.ReadLine());
-
-                zapisiSimbolUIgru(Polje, BrojPolja, IgracDva);
+                do
+                {
+                    Console.Write("Igrac 2 (O) - broj polja: ");
+                    
+                    BrojPolja = Convert.ToInt32(Console.ReadLine());
+                }while(zapisiSimbolUIgru(Polje, BrojPolja, IgracDva) == false);
 
                 if(provjeriZaPobjednika(Polje))
                 {
@@ -94,7 +97,7 @@ namespace program
             Console.WriteLine();
         }
 
-        static void zapisiSimbolUIgru(Simbol[,] Polje, int Broj, string Simbol)
+        static bool zapisiSimbolUIgru(Simbol[,] Polje, int Broj, string Simbol)
         {
             int KoordinataX = 0, KoordinataY = 0;
 
@@ -144,7 +147,13 @@ namespace program
                     break;
             }
 
-            Polje[KoordinataX, KoordinataY].PostaviSimbol(Simbol);
+            if(Polje[KoordinataX, KoordinataY].PostaviSimbol(Simbol) == false)
+            {
+                Console.WriteLine("To polje je vec popunjeno!");
+                return false;
+            }
+
+            return true;
         }
 
         static bool provjeriZaPobjednika(Simbol[,] Polje)

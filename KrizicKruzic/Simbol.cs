@@ -13,9 +13,12 @@ namespace Igra
 
         Tip TipSimbola;
 
+        private bool Zapisan;
+
         public Simbol()
         {
             this.TipSimbola = Tip.Prazno;
+            this.Zapisan = false;
         }
 
         public void Koordinatiziraj(int _X, int _Y)
@@ -47,17 +50,26 @@ namespace Igra
             }
         }
 
-        public void PostaviSimbol(string Simbol)
+        public bool PostaviSimbol(string Simbol)
         {
-            if(Simbol == "X")
+            if(this.Zapisan == false)
             {
-                this.TipSimbola = Tip.Krizic;
+                if(Simbol == "X")
+                {
+                    this.TipSimbola = Tip.Krizic;
+                    this.Zapisan = true;
+                    return true;
+                }
+
+                if(Simbol == "O")
+                {
+                    this.TipSimbola = Tip.Kruzic;
+                    this.Zapisan = true;
+                    return true;
+                }
             }
 
-            if(Simbol == "O")
-            {
-                this.TipSimbola = Tip.Kruzic;
-            }      
+            return false;   
         }
     }
 }
