@@ -7,8 +7,7 @@ namespace program
     {
         static void Main(string[] args)
         {
-            Console.Clear();
-            
+   
             String IgracJedan = "X";
             string IgracDva = "O";
 
@@ -29,22 +28,21 @@ namespace program
                     Polje[i,j].Koordinatiziraj(i, j);
                 }
             }
-
-            //Test(Polje);
-
+            
             int BrojPolja;
 
             while(true)
             {
                 ispisiIgru(Polje);
                 
-                Console.Write("Igrac 1 (X) - broj polja: ");
-                
-                BrojPolja = Convert.ToInt32(Console.ReadLine());
-      
-                zapisiSimbolUIgru(Polje, BrojPolja, IgracJedan);
+                do
+                {
+                    Console.Write("Igrac 1 (X) - broj polja: ");
+                    
+                    BrojPolja = Convert.ToInt32(Console.ReadLine());
+                }while(zapisiSimbolUIgru(Polje, BrojPolja, IgracJedan) == false);
 
-                if(provjeriZaPobjednika(Polje))
+                if(provjeriZaPobjednika(Polje) == true)
                 {
                     Console.Clear();
                     ispisiIgru(Polje);
@@ -52,30 +50,42 @@ namespace program
                     break;
                 }
 
-                Console.Clear();
+                if(provjeriIzjednaceno(Polje) == true)
+                {
+                    ispisiIgru(Polje);
+                    Console.WriteLine("Izjednaceno!");
+                    break;
+                }
 
                 ispisiIgru(Polje);
 
-                Console.Write("Igrac 2 (O) - broj polja: ");
-                BrojPolja = Convert.ToInt16(Console.ReadLine());
+                do
+                {
+                    Console.Write("Igrac 2 (O) - broj polja: ");
+                    
+                    BrojPolja = Convert.ToInt32(Console.ReadLine());
+                }while(zapisiSimbolUIgru(Polje, BrojPolja, IgracDva) == false);
 
-                zapisiSimbolUIgru(Polje, BrojPolja, IgracDva);
-
-                if(provjeriZaPobjednika(Polje))
+                if(provjeriZaPobjednika(Polje) == true)
                 {
                     Console.Clear();
                     ispisiIgru(Polje);
                     Console.WriteLine("Igrac 2 je pobjednik!");
                     break;
                 }
-                
-                Console.Clear();
 
+                if(provjeriIzjednaceno(Polje) == true)
+                {
+                    ispisiIgru(Polje);
+                    Console.WriteLine("Izjednaceno!");
+                    break;
+                }
             }
         }
 
         static void ispisiIgru(Simbol[,] Polje)
         {
+            Console.Clear();
             for(int i = 0; i < 3; i++)
             {
                 for(int j = 0; j < 3; j++)
@@ -94,7 +104,7 @@ namespace program
             Console.WriteLine();
         }
 
-        static void zapisiSimbolUIgru(Simbol[,] Polje, int Broj, string Simbol)
+        static bool zapisiSimbolUIgru(Simbol[,] Polje, int Broj, string Simbol)
         {
             int KoordinataX = 0, KoordinataY = 0;
 
@@ -144,7 +154,13 @@ namespace program
                     break;
             }
 
-            Polje[KoordinataX, KoordinataY].PostaviSimbol(Simbol);
+            if(Polje[KoordinataX, KoordinataY].PostaviSimbol(Simbol) == false)
+            {
+                Console.WriteLine("To polje je vec popunjeno!");
+                return false;
+            }
+
+            return true;
         }
 
         static bool provjeriZaPobjednika(Simbol[,] Polje)
@@ -178,12 +194,21 @@ namespace program
             return false;
         }
 
-        static void Test(Simbol[,] Polje)
+        static bool provjeriIzjednaceno(Simbol[,] Polje)
         {
-            Polje[1,1].PostaviSimbol("X");
-            Polje[0,2].PostaviSimbol("O");
-            Polje[2,0].PostaviSimbol("X");
-            Polje[2,2].PostaviSimbol("X");
+            for(int i = 0; i < 3; i++)
+            {
+                for(int j = 0; j < 3; j++)
+                {
+                    if(Polje[i,j].DohvatiTip() == Tip.Prazno)
+                    {
+                        return false;
+                    }
+                }
+            }
+            
+            return true;
         }
+
     }
 }
